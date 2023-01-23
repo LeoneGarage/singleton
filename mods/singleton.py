@@ -1,6 +1,6 @@
 import time
 
-class SingletonInstance:
+class SingletonProvider:
   _instance = None
 
   def __init__(self):
