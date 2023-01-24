@@ -8,15 +8,15 @@ from functools import lru_cache
 import os
 import sys
 import time
-from mods.singleton import SingletonProvider, Singleton
+from mods.singleton_provider import SingletonProvider
+from mods.singleton import Singleton
 
 # COMMAND ----------
 
-provider = SingletonProvider()
-broadcast_provider = sc.broadcast(provider)
+broadcast_provider = sc.broadcast(SingletonProvider(Singleton))
 
 def run_row(text: str) -> str:
-  res = broadcast_provider.value.get().getValue()
+  res = broadcast_provider.value.getInstance().getValue()
   return res
 
 def run_series(s: pd.Series) -> pd.Series:
