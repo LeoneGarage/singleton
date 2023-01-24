@@ -34,5 +34,5 @@ df = df.withColumn('c', series(col('a')))
 
 # COMMAND ----------
 
-# Thd output from this should have as many rows as there are Worker nodes
+# The output from this should have as many rows as there are Worker nodes
 display(df.select(col('c')).distinct())
